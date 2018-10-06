@@ -7,3 +7,13 @@ $ git clone https://github.com/skoolguy/app-configurer-questionnaire-api.git
 $ npm install
 $ node app.js
 ```
+## Webservices to call
+
+### test to check is API is up
+```
+$ curl http://localhost:3000/test
+```
+#### Response
+```
+worked
+```
