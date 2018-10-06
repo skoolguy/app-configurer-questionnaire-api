@@ -16,5 +16,5 @@ $ curl http://localhost:3000/test
 ```
 #### Response
 ```
-worked
+app-configurer-questionnaire-api is running
 ```
