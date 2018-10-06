@@ -3,7 +3,7 @@
 ## To run :
 
 ```
-$ git clone https://github.com/skoolguy/app-configurer-questionnaire-api.git \n
-$ npm install \n
-$ node app.js \n
+$ git clone https://github.com/skoolguy/app-configurer-questionnaire-api.git
+$ npm install
+$ node app.js
 ```
