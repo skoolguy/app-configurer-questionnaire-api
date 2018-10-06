@@ -1,0 +1,24 @@
+{
+  "name": "app-configurer-questionnaire-api",
+  "version": "1.0.0",
+  "description": "An api that provides enough functionalities to setup an application configuration",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skoolguy/app-configurer-questionnaire-api.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "questionnaire"
+  ],
+  "author": "Ajmal Aliyar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skoolguy/app-configurer-questionnaire-api/issues"
+  },
+  "homepage": "https://github.com/skoolguy/app-configurer-questionnaire-api#readme"
+}
