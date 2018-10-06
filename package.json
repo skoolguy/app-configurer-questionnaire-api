@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/skoolguy/app-configurer-questionnaire-api/issues"
   },
-  "homepage": "https://github.com/skoolguy/app-configurer-questionnaire-api#readme"
+  "homepage": "https://github.com/skoolguy/app-configurer-questionnaire-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
 }
