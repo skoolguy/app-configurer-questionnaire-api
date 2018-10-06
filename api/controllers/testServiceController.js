@@ -1,3 +1,3 @@
 exports.test = function(req, res){
-    res.send('worked');
+    res.send('app-configurer-questionnaire-api is running');
 };
