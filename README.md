@@ -1,6 +1,6 @@
 # app-configurer-questionnaire-api
 
-##To run :
+## To run :
 
 ```
 $ git clone https://github.com/skoolguy/app-configurer-questionnaire-api.git \n
