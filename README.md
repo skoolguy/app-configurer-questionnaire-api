@@ -9,7 +9,7 @@ $ node app.js
 ```
 ## Webservices to call
 
-### -> test to check is API is up
+### -> test to check if API is up
 #### Request
 ```
 $ curl http://localhost:3000/test
