@@ -7,6 +7,9 @@ var sheetsRoute = require('./api/routes/sheetsRoute');
 testRoutes(app);//register the testRoute
 sheetsRoute(app);//register sheetsRoute
 
-app.listen(port);
-
-console.log('app-configurer-questionnaire-api RESTful API server started on: ' + port);
+app.listen(
+    port, 
+    () => console.log(
+        `app-configurer-questionnaire-api RESTful API server started on port: ${port}`
+        )
+);
