@@ -26,7 +26,6 @@
     "nodemon": "^1.18.4"
   },
   "dependencies": {
-    "express": "^4.16.3",
-    "node-xlsx": "^0.12.1"
+    "express": "^4.16.3"
   }
 }
