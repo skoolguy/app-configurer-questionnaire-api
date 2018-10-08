@@ -25,7 +25,7 @@ app.post('/sheets/readFile', (req, res) => {
             res.send(err);
         } else {
             console.log(req.file);
-            res.send('test');
+            res.send('File uploaded');
         }
     });
 } );
