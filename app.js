@@ -24,7 +24,7 @@ app.post('/sheets/readFile', (req, res) => {
         if (err){
             res.send(err);
         } else {
-            console.log(req.file);
+            console.log('The file is uploaded');
             res.send('File uploaded');
         }
     });
