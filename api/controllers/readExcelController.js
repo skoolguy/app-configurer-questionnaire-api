@@ -29,5 +29,26 @@ fs.readdir(directoryPath, (err, files) => {
 readFile = function(directoryPath, filename){
     console.log('Opening file ' + filename);
     var workbook = XLSX.readFile(path.join(directoryPath, filename));
-    console.log(workbook);
+
+    //get all the sheetnames
+    var tables = workbook.SheetNames;
+
+    //to store all the
+    var sqlTableObjects;
+
+    tables.forEach((table) => {
+
+        var tableData = workbook.Sheets[table];
+
+        //Going through the cell address
+        for(cellKey in tableData){
+            console.log(cellKey);
+        }
+
+        //Building object for SQL generation
+        sqlTableObject = {
+            tableName: table,
+            columns:'columns'
+        };
+    });
 }
