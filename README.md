@@ -12,7 +12,7 @@ $ node app.js
 ### -> test to check if API is up
 #### Request
 ```
-$ curl http://localhost:3000/test
+$ curl -X GET http://localhost:3000/test
 ```
 #### Response
 ```
@@ -21,7 +21,7 @@ app-configurer-questionnaire-api is running
 ### -> upload File to server
 #### Request
 ```
-$ curl -v -F excelFile=@<filename> http://localhost:3000/sheets/readFile
+$ curl -X POST -F excelFile=@<file> http://localhost:3000/sheets/readFile
 ```
 #### Response
 ```
