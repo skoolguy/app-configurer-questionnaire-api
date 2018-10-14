@@ -30,8 +30,6 @@ readFile = function(directoryPath, filename){
     console.log('Opening file ' + filename);
     var workbook = XLSX.readFile(path.join(directoryPath, filename));
 
-    //console.log('workbook : ' + workbook);
-
     //get all the sheetnames
     var tables = workbook.SheetNames;
 
@@ -51,20 +49,18 @@ readFile = function(directoryPath, filename){
             rowCount: XLSX.utils.decode_range(tableData['!ref']).e.r + 1
         };
 
-        console.log(XLSX.utils.decode_range(tableData['!ref']));
-        //console.log(tableData[XLSX.utils.encode_cell({r: 1, c: 1})]);
-
-        //Going through the cell address
-        for(cellKey in tableData){
-
-            //get column names(need to find the correct regex)
-            if(cellKey.match('[A-Z]1')){
-                sqlTableObject.columns.push(cellKey);
-            }
+        //Iterating through the first row
+        for(ColCounter = 0; ColCounter <= XLSX.utils.decode_range(tableData['!ref']).e.c; ColCounter++){
+            value = tableData[XLSX.utils.encode_cell({r: 0, c: ColCounter})].v;
+                if(value){
+                    sqlTableObject.columns.push(value);
+                }
         }
     });
 
     sqlTableObjects.push(sqlTableObject);
-    console.log(JSON.stringify(sqlTableObjects));
+    console.log('______________________\n' +
+    'Generated pre sql object array containing data from all the sheets:\n'
+    + JSON.stringify(sqlTableObjects));
 
 }
