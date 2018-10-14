@@ -22,8 +22,6 @@ exports.getSQL = (data, callback) => {
             FirstColumnValue = params[0];
             var deleteString = `DELETE FROM ${tableName} WHERE ${FirstColumnName} = '${FirstColumnValue}'`;        
             var insertString;
-            console.log("test log : " + JSON.stringify('adsf'));
-            console.log(deleteString);
             deleteStatements.push(deleteString);
         });
     });
@@ -33,7 +31,8 @@ exports.getSQL = (data, callback) => {
 
     console.log('=============================\n'
     + 'generated the sql queries :\n\n'
-    + JSON.stringify(response, null, 2));
+    + JSON.stringify(response, null, 2)
+    + '=============================\n');
     
     callback(response);
 }
