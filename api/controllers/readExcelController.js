@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const XLSX = require('xlsx');
+const sql = require('./sqlConverter');
 
 exports.extract = function(callback){
 
@@ -28,7 +29,9 @@ exports.extract = function(callback){
                 data = readFile(directoryPath, filename);
             }
         }
-        callback(data);
+        sql.getSQL(data, (res) => {
+            callback(res);
+        });
     });  
 }
 

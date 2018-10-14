@@ -28,7 +28,6 @@ app.post('/sheets/readFile', (req, res) => {
             res.send(err);
         } else {
             console.log('The file is uploaded');
-            var data = null;
             excelParser.extract((data) => {
                 console.log('Sending back the response...\n');
                 res.send(data);
