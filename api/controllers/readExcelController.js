@@ -30,25 +30,39 @@ readFile = function(directoryPath, filename){
     console.log('Opening file ' + filename);
     var workbook = XLSX.readFile(path.join(directoryPath, filename));
 
+    //console.log('workbook : ' + workbook);
+
     //get all the sheetnames
     var tables = workbook.SheetNames;
 
-    //to store all the
-    var sqlTableObjects;
+    //to store all the objects
+    var sqlTableObjects = [];
 
     tables.forEach((table) => {
 
         var tableData = workbook.Sheets[table];
+        //console.log(tableData);
 
-        //Going through the cell address
-        for(cellKey in tableData){
-            console.log(cellKey);
-        }
 
         //Building object for SQL generation
         sqlTableObject = {
             tableName: table,
-            columns:'columns'
+            columns: [],
+            rowCount: XLSX.utils.decode_range(tableData['!ref']).e.r
         };
+
+        console.log(sqlTableObject.rowCount);
+        //Going through the cell address
+        for(cellKey in tableData){
+
+            //get column names(need to find the correct regex)
+            if(cellKey.match('[A-Z]1')){
+                sqlTableObject.columns.push(cellKey);
+            }
+        }
     });
+
+    sqlTableObjects.push(sqlTableObject);
+    console.log(JSON.stringify(sqlTableObjects));
+
 }
