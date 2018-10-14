@@ -1,9 +1,12 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
-var testRoutes = require('./api/routes/testRoute');
 var multer  = require('multer'); //For gettin multipart form data
 var path = require('path'); //used in storage engine to get file extension 
+
+
+var testRoutes = require('./api/routes/testRoute');
+var excelParser = require('./api/controllers/readExcelController');
 
 //Set storage engine for multer
 var storage = multer.diskStorage({
@@ -25,7 +28,11 @@ app.post('/sheets/readFile', (req, res) => {
             res.send(err);
         } else {
             console.log('The file is uploaded');
-            res.send('File uploaded');
+            var data = null;
+            excelParser.extract((data) => {
+                console.log('Sending back the response...\n');
+                res.send(data);
+            });
         }
     });
 } );
