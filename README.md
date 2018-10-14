@@ -24,6 +24,7 @@ app-configurer-questionnaire-api is running
 $ curl -X POST -F excelFile=@<file> http://localhost:3000/sheets/readFile
 ```
 #### Response
+in the format
 ```
-File uploaded  
+[{"tableName":"TABLE1","columns":["COL1","COL2","COL3","COL4"],"rows":[["row1data1","row1data2","row1data3","row1data4"],["row2data1","row2data2","row2data3","row2data4"]]}]
 ```
