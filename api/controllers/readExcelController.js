@@ -38,20 +38,22 @@ readFile = function(directoryPath, filename){
     //to store all the objects
     var sqlTableObjects = [];
 
+    //Iterate through each sheet
     tables.forEach((table) => {
 
         var tableData = workbook.Sheets[table];
         //console.log(tableData);
 
-
         //Building object for SQL generation
         sqlTableObject = {
             tableName: table,
             columns: [],
-            rowCount: XLSX.utils.decode_range(tableData['!ref']).e.r
+            rowCount: XLSX.utils.decode_range(tableData['!ref']).e.r + 1
         };
 
-        console.log(sqlTableObject.rowCount);
+        console.log(XLSX.utils.decode_range(tableData['!ref']));
+        //console.log(tableData[XLSX.utils.encode_cell({r: 1, c: 1})]);
+
         //Going through the cell address
         for(cellKey in tableData){
 
