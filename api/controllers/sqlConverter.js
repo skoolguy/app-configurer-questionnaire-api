@@ -48,7 +48,6 @@ exports.getSQL = (data, callback) => {
         xmlTags.push(xmlString);
     });
     
-    console.log("insertStatements : " + JSON.stringify(insertStatements));
     response.delete = deleteStatements;
     response.insert = insertStatements;
     response.xml    = xmlTags;
