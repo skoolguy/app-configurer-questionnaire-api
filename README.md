@@ -54,14 +54,19 @@ in the format:
 ```
 {
     "delete": [
-        "DELETE FROM DKDBLABLA WHERE column1 = 'col1data'",
-        "DELETE FROM DKDBLABLA WHERE column1 = 'bla'",
-        "DELETE FROM DKDBLABLA WHERE column1 = 'col1data'"
+        "DELETE FROM DKDBLABLA WHERE col1 = 'col1data';",
+        "DELETE FROM DKDBLABLA WHERE col1 = 'bla';",
+        "DELETE FROM DKDBLABLA WHERE col1 = 'col1data';"
     ],
     "insert": [
-        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (col1data,col2data,col3data);",
-        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (bla,bli,blu);",
-        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (col1data,col2data,col3data);"
+        "INSERT INTO DKDBLABLA(col1,col2,col3) VALUES (col1data,col2data,col3data);",
+        "INSERT INTO DKDBLABLA(col1,col2,col3) VALUES (bla,bli,blu);",
+        "INSERT INTO DKDBLABLA(col1,col2,col3) VALUES (col1data,col2data,col3data);"
+    ],
+    "xml": [
+        "<DKDBLABLA col1 = \"col1data\" col2 = \"col2data\" col3 = \"col3data\"/>",
+        "<DKDBLABLA col1 = \"bla\" col2 = \"bli\" col3 = \"blu\"/>",
+        "<DKDBLABLA col1 = \"col1data\" col2 = \"col2data\" col3 = \"col3data\"/>"
     ]
 }
 ```
