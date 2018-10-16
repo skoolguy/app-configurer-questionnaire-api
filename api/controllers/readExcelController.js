@@ -61,7 +61,10 @@ readFile = function(directoryPath, filename){
 
         //Iterating through the first row
         for(colCounter = 0; colCounter <= sheetRange.e.c; colCounter++){
-            value = tableData[XLSX.utils.encode_cell({r: 0, c: colCounter})].v;
+            var cell_address = {c:colCounter, r:0};
+            var cell_ref = XLSX.utils.encode_cell(cell_address);
+            value = tableData[cell_ref].v;
+            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaa' + JSON.stringify(value));
                 if(value){
                     sqlTableObject.columns.push(value);
                 }

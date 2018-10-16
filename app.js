@@ -6,7 +6,12 @@ var path = require('path'); //used in storage engine to get file extension
 
 
 var testRoutes = require('./api/routes/testRoute');
+var genSQLroute = require('./api/routes/genSQLroute');
 var excelParser = require('./api/controllers/readExcelController');
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Set storage engine for multer
 var storage = multer.diskStorage({
@@ -37,6 +42,7 @@ app.post('/sheets/readFile', (req, res) => {
 } );
 
 testRoutes(app);//register the testRoute
+genSQLroute(app);
 
 app.listen(
     port, 

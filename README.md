@@ -18,6 +18,53 @@ $ curl -X GET http://localhost:3000/test
 ```
 app-configurer-questionnaire-api is running
 ```
+### -> Send tableData to receive insert query, delete query and XML
+#### Request
+```
+$ curl --header "Content-Type: application/json" --request POST 
+  --data '{
+	"tableName" : "DKDBLABLA",
+	"columns": [
+		"col1",
+		"col2",
+		"col3"
+	],
+	"rows":[
+		[
+			"col1data",
+			"col2data",
+			"col3data"
+		],
+		[
+			"bla",
+			"bli",
+			"blu"
+		],
+		[
+			"col1data",
+			"col2data",
+			"col3data"
+		]
+		
+	]
+}' http://localhost:3000/generateSQL           (remove the next line characters if you run this on command line)
+``` 
+#### Response
+in the format:
+```
+{
+    "delete": [
+        "DELETE FROM DKDBLABLA WHERE column1 = 'col1data'",
+        "DELETE FROM DKDBLABLA WHERE column1 = 'bla'",
+        "DELETE FROM DKDBLABLA WHERE column1 = 'col1data'"
+    ],
+    "insert": [
+        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (col1data,col2data,col3data);",
+        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (bla,bli,blu);",
+        "INSERT INTO DKDBLABLA(column1,column2,column3) VALUES (col1data,col2data,col3data);"
+    ]
+}
+```
 ### -> upload File to server
 #### Request
 ```

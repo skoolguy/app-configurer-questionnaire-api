@@ -4,6 +4,8 @@ exports.getSQL = (data, callback) => {
         insert : null
     };
 
+    console.log(data);
+
     var deleteStatements = [];
     var insertStatements = [];
     var columns = [];
@@ -13,18 +15,30 @@ exports.getSQL = (data, callback) => {
     var FirstColumnValue;
     var entries;
     
-    data.forEach(tableData => {
-        tableName = tableData.tableName;
-        columns = tableData.columns;
-        FirstColumnName = columns[0];
-        entries = tableData.rows;
-        entries.forEach(params => {
-            FirstColumnValue = params[0];
-            var deleteString = `DELETE FROM ${tableName} WHERE ${FirstColumnName} = '${FirstColumnValue}'`;        
-            var insertString;
-            deleteStatements.push(deleteString);
+
+    tableName = data.tableName;
+    columns = data.columns;
+    FirstColumnName = columns[0];
+    entries = data.rows;
+    entries.forEach(params => {
+        FirstColumnValue = params[0];
+        var deleteString = `DELETE FROM ${tableName} WHERE ${FirstColumnName} = '${FirstColumnValue}'`;        
+        var insertString = `INSERT INTO ${tableName}(`;
+        columns.forEach((column) => {
+            insertString += column + ",";
         });
+        insertString = insertString.substr(0, insertString.length-1);
+        insertString += ") VALUES (";
+        params.forEach((colValue) => {
+            insertString += colValue + ",";
+        });
+        insertString = insertString.substr(0, insertString.length-1) + ");";
+
+
+        deleteStatements.push(deleteString);
+        insertStatements.push(insertString);
     });
+    
     console.log("insertStatements : " + JSON.stringify(insertStatements));
     response.delete = deleteStatements;
     response.insert = insertStatements;
